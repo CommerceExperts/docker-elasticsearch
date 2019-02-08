@@ -8,15 +8,15 @@ BASE=/elasticsearch
 if [ "${OPTIMIZED_SETTINGS}" == "true" ]; then
     # Allow for memlock if enabled
     ulimit -l unlimited
+    export MEMORY_LOCK=false;
 
     # set number of open file descriptors if enabled
     ulimit -n 65536
 
-    # set virtual memory if enabled
-    ulimit -v 262144
-
     # set number of threads for user
-    ulimit -u 4096
+    ulimit -p unlimited
+else
+    export MEMORY_LOCK=false;
 fi
 
 # Set a random node name if not set
