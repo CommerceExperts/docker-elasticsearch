@@ -4,9 +4,19 @@ echo "Starting Elasticsearch ${ES_VERSION}"
 
 BASE=/elasticsearch
 
-# Allow for memlock if enabled
-if [ "${MEMORY_LOCK}" == "true" ]; then
+# optimize settings if enabled
+if [ "${OPTIMIZED_SETTINGS}" == "true" ]; then
+    # Allow for memlock if enabled
     ulimit -l unlimited
+
+    # set number of open file descriptors if enabled
+    ulimit -n 65536
+
+    # set virtual memory if enabled
+    ulimit -v 262144
+
+    # set number of threads for user
+    ulimit -u 4096
 fi
 
 # Set a random node name if not set
