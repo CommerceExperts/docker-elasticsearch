@@ -6,7 +6,7 @@
 
 Ready to use, lean and highly configurable Elasticsearch container image.
 
-[![Docker Repository on Quay.io](https://quay.io/repository/pires/docker-elasticsearch/status "Docker Repository on Quay.io")](https://quay.io/repository/pires/docker-elasticsearch)
+[Docker Repository on DockerHub](https://cloud.docker.com/repository/registry-1.docker.io/commerceexperts/docker-elasticsearch)
 
 ## Current software
 
