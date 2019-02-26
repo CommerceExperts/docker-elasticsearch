@@ -5,7 +5,7 @@ LABEL author="pjpires@gmail.com, gabriel.bauer@commerce-experts.com"
 # Export HTTP & Transport
 EXPOSE 9200 9300
 
-ENV ES_VERSION 6.6.0
+ENV ES_VERSION 6.6.1
 
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
 ENV ES_TARBAL "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz"
