@@ -68,6 +68,16 @@ export NODE_NAME=${NODE_NAME}
 rm -rf /elasticsearch/modules/x-pack/x-pack-ml
 rm -rf /elasticsearch/modules/x-pack-ml
 
+# calculate optimal limits for es from the container limits
+MAX_RAM=$(( $(cat /sys/fs/cgroup/memory/memory.limit_in_bytes) * 50 / 100 ))
+export ES_JAVA_OPTS="-XX:MaxRAM=$MAX_RAM -XX:MaxRAMFraction=1 -XX:MetaspaceSize=80m -XX:MaxMetaspaceSize=160m"
+
+if [[ $MAX_RAM -lt 0 ]]; then
+    echo "It is very dangerous to run a container without a memory limit in production!"
+    export ES_JAVA_OPTS="-Xms512m -Xmx512m"
+fi
+
+
 # Run
 if [[ $(whoami) == "root" ]]; then
     if [ ! -d "/data/data/nodes/0" ]; then
