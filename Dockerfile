@@ -32,6 +32,8 @@ RUN apk add --no-cache -t .build-deps gnupg openssl \
   && mkdir -p /elasticsearch/config/scripts /elasticsearch/plugins \
   && chown -R elasticsearch:elasticsearch /elasticsearch \
   && rm -rf /tmp/* \
+  && chown -R root:root /tmp \
+  && chmod 777 -R /tmp \
   && apk del --purge .build-deps
 
 ENV PATH /elasticsearch/bin:$PATH
